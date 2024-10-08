@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const StartScreen = ({ questions, startQuiz, totalQuestions }) => {
+const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleReviewMode}) => {
   const [startNb, setStartNb] = useState(0);
   const [endNb, setEndNb] = useState(0);
   const [numRandom, setNumRandom] = useState(0);
@@ -66,6 +66,9 @@ const StartScreen = ({ questions, startQuiz, totalQuestions }) => {
           onChange={(e) => setNumRandom(Number(e.target.value))}
         />
       </div>
+      <button onClick={toggleReviewMode}>
+        {reviewMode ? 'Disable Review Mode' : 'Enable Review Mode'}
+      </button>
       <button onClick={handleStartQuiz}>Start Quiz</button>
     </div>
   );

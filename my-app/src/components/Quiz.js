@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Question from './Question';
 import shuffle from '../utils/shuffle';
 
-const Quiz = ({ questions, onSubmit }) => {
+const Quiz = ({ questions, onSubmit, reviewMode }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
@@ -21,10 +21,25 @@ const Quiz = ({ questions, onSubmit }) => {
 
   // Handle moving to the next question
   const handleNext = () => {
-    if (currentQuestionIndex < totalQuestions - 1) {
-      setShowCorrectAnswer(false); // Reset correct answer before question change
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    const correctAnswers = shuffledQuestions[currentQuestionIndex].site_answers;
+    const userAnswer = answers[currentQuestionIndex] || [];
+
+    // Check if the answer is correct
+    const isCorrect =
+      correctAnswers.length === userAnswer.length &&
+      correctAnswers.every((answer) => userAnswer.includes(answer));
+
+    if (!isCorrect) {
+      // If the answer is incorrect and review mode is enabled
+      if (reviewMode && !showCorrectAnswer) {
+        setShowCorrectAnswer(true); // Show the correct answer
+        return; // Prevent changing the question
+      }
     }
+
+    // Move to the next question if correct or in normal mode
+    setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
+    setShowCorrectAnswer(false);
   };
 
   // Handle moving to the previous question

@@ -10,7 +10,7 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [totalQuestions, setTotalQuestions] = useState(false);
-  
+  const [reviewMode, setReviewMode] = useState(false); // State for review mode
 
   // Load the quiz questions on launch
   useEffect(() => {
@@ -41,6 +41,12 @@ const App = () => {
     setSelectedQuestions([])
   };
 
+  // Handle toggling the review mode
+  const toggleReviewMode = () => {
+    setReviewMode(!reviewMode);
+  };
+  
+
   return (
     <div>
       {isQuizComplete ? (
@@ -49,9 +55,10 @@ const App = () => {
         <Quiz
           questions={selectedQuestions}
           onSubmit={handleQuizSubmit}
+          reviewMode={reviewMode} // Pass the toggle function
         />
       ) : (
-        <StartScreen questions={questions} startQuiz={startQuiz} totalQuestions={totalQuestions} />
+        <StartScreen questions={questions} startQuiz={startQuiz} totalQuestions={totalQuestions} reviewMode={reviewMode} toggleReviewMode={toggleReviewMode} />
       )}
     </div>
   );
