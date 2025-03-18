@@ -34,6 +34,7 @@ const Question = ({ question, questionIndex, onAnswer, userAnswer, showCorrectAn
     <div>
       {NewlineText(question.question_text)}<br></br>
 
+      <h3>Answer here :</h3>
       {question.choices.map((choice, index) => (
         <label
           key={index}

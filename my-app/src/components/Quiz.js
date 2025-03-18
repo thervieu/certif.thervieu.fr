@@ -70,6 +70,7 @@ const Quiz = ({ questions, onSubmit, reviewMode }) => {
 
   return (
     <div>
+      <h2>Question {currentQuestionIndex+1}/{questions.length}</h2> 
       {shuffledQuestions.length > 0 && (
         <Question
           question={shuffledQuestions[currentQuestionIndex]}

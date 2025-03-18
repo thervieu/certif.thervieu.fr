@@ -14,7 +14,7 @@ const App = () => {
 
   // Load the quiz questions on launch
   useEffect(() => {
-    fetch('/DVA-C02.json')
+    fetch('/SAA_questions.json')
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data)

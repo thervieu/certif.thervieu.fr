@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleReviewMode}) => {
-  const [startNb, setStartNb] = useState(0);
-  const [endNb, setEndNb] = useState(0);
-  const [numRandom, setNumRandom] = useState(0);
+  const [startNb, setStartNb] = useState(1);
+  const [endNb, setEndNb] = useState(20);
+  const [numRandom, setNumRandom] = useState(50);
   const [selectionType, setSelectionType] = useState('range');
 
   const handleStartQuiz = () => {
@@ -20,6 +20,11 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
       }
       startQuiz(selected);
     }
+  };
+
+  const addTwenty = () => {
+    setStartNb(startNb+20);
+    setEndNb(endNb+20);
   };
 
   return (
@@ -40,14 +45,24 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
           type="number"
           placeholder="Start number"
           value={startNb}
-          onChange={(e) => setStartNb(Number(e.target.value))}
+          onChange={(e) => {
+            setStartNb(Number(e.target.value) < 0 ? 1 : Number(e.target.value))
+            setSelectionType('range');
+          }}
         />
         <input
           type="number"
           placeholder="End number"
           value={endNb}
-          onChange={(e) => setEndNb(Number(e.target.value))}
+          onChange={(e) => {  
+            setEndNb(Number(e.target.value) < questions.length ? Number(e.target.value) : questions.length)
+            setSelectionType('range');
+          }}
         />
+        <button onClick={addTwenty}>
+          Add 20
+        </button>
+          
       </div>
       <div>
         <label>
@@ -63,7 +78,10 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
           type="number"
           placeholder="Number of questions"
           value={numRandom}
-          onChange={(e) => setNumRandom(Number(e.target.value))}
+          onChange={(e) => {
+            setNumRandom(Number(e.target.value));
+            setSelectionType('random');
+          }}
         />
       </div>
       <button onClick={toggleReviewMode}>
