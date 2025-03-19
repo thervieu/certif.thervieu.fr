@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleReviewMode}) => {
   const [startNb, setStartNb] = useState(1);
   const [endNb, setEndNb] = useState(20);
-  const [numRandom, setNumRandom] = useState(50);
+  const [numRandom, setNumRandom] = useState(65);
+  const [rangeNb, SetRangeNB] = useState(200);
   const [selectionType, setSelectionType] = useState('range');
 
   const handleStartQuiz = () => {
@@ -13,7 +14,8 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
     } else {
       const selected = [];
       while (selected.length < numRandom) {
-        const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        const rangeQuestions = questions.slice(0, rangeNb);
+        const randomQuestion = rangeQuestions[Math.floor(Math.random() * rangeQuestions.length)];
         if (!selected.includes(randomQuestion)) {
           selected.push(randomQuestion);
         }
@@ -80,6 +82,15 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
           value={numRandom}
           onChange={(e) => {
             setNumRandom(Number(e.target.value));
+            setSelectionType('random');
+          }}
+        />
+        <input
+          type="number"
+          placeholder="Range number"
+          value={rangeNb}
+          onChange={(e) => {
+            SetRangeNB(Number(e.target.value));
             setSelectionType('random');
           }}
         />

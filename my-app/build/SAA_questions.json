@@ -1516,7 +1516,7 @@
     ]
   },
   {
-    "question_text": "A company provides an API interface to customers so the customers can retrieve their financial information. \u0415he company expects a larger number of requests during peak usage times of the year.\n\nThe company requires the API to respond consistently with low latency to ensure customer satisfaction. The company needs to provide a compute host for the API.\n\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "question_text": "A company provides an API interface to customers so the customers can retrieve their financial information. The company expects a larger number of requests during peak usage times of the year.\n\nThe company requires the API to respond consistently with low latency to ensure customer satisfaction. The company needs to provide a compute host for the API.\n\nWhich solution will meet these requirements with the LEAST operational overhead?",
     "question_type": "single",
     "choices": [
       "Use an Application Load Balancer and Amazon Elastic Container Service (Amazon ECS).",
