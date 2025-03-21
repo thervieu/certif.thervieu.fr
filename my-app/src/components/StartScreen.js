@@ -4,7 +4,7 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
   const [startNb, setStartNb] = useState(401);
   const [endNb, setEndNb] = useState(410);
   const [numRandom, setNumRandom] = useState(100);
-  const [rangeNb, SetRangeNB] = useState(400);
+  const [rangeNb, SetRangeNB] = useState(450);
   const [selectionType, setSelectionType] = useState('range');
 
   const handleStartQuiz = () => {
