@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleReviewMode}) => {
-  const [startNb, setStartNb] = useState(401);
-  const [endNb, setEndNb] = useState(410);
+  const [startNb, setStartNb] = useState(451);
+  const [endNb, setEndNb] = useState(460);
   const [numRandom, setNumRandom] = useState(100);
   const [rangeNb, SetRangeNB] = useState(450);
   const [selectionType, setSelectionType] = useState('range');
