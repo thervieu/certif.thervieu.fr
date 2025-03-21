@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleReviewMode}) => {
-  const [startNb, setStartNb] = useState(1);
-  const [endNb, setEndNb] = useState(20);
-  const [numRandom, setNumRandom] = useState(65);
-  const [rangeNb, SetRangeNB] = useState(200);
+  const [startNb, setStartNb] = useState(401);
+  const [endNb, setEndNb] = useState(410);
+  const [numRandom, setNumRandom] = useState(100);
+  const [rangeNb, SetRangeNB] = useState(400);
   const [selectionType, setSelectionType] = useState('range');
 
   const handleStartQuiz = () => {
@@ -25,8 +25,8 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
   };
 
   const addTwenty = () => {
-    setStartNb(startNb+20);
-    setEndNb(endNb+20);
+    setStartNb(startNb+10);
+    setEndNb(endNb+10);
   };
 
   return (
@@ -62,7 +62,7 @@ const StartScreen = ({ questions, startQuiz, totalQuestions, reviewMode, toggleR
           }}
         />
         <button onClick={addTwenty}>
-          Add 20
+          Add 10
         </button>
           
       </div>

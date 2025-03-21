@@ -10,7 +10,7 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [totalQuestions, setTotalQuestions] = useState(false);
-  const [reviewMode, setReviewMode] = useState(false); // State for review mode
+  const [reviewMode, setReviewMode] = useState(true); // State for review mode
 
   // Load the quiz questions on launch
   useEffect(() => {
@@ -35,6 +35,12 @@ const App = () => {
     setIsQuizComplete(true); // Mark quiz as complete
   };
 
+  const handleWorkOnWrong = (wrongQuestions) => {
+    setUserAnswers({}); // Reset answers
+    setIsQuizComplete(false); // Reset quiz state
+    setSelectedQuestions(wrongQuestions);
+  }
+
   const handleQuizRestart = () => {
     setUserAnswers({}); // Reset answers
     setIsQuizComplete(false); // Reset quiz state
@@ -46,11 +52,10 @@ const App = () => {
     setReviewMode(!reviewMode);
   };
   
-
   return (
     <div>
       {isQuizComplete ? (
-        <Result questions={selectedQuestions} userAnswers={userAnswers} handleQuizRestart={handleQuizRestart}/>
+        <Result questions={selectedQuestions} userAnswers={userAnswers} handleWorkOnWrong={handleWorkOnWrong} handleQuizRestart={handleQuizRestart}/>
       ) : selectedQuestions.length > 0 ? (
         <Quiz
           questions={selectedQuestions}
