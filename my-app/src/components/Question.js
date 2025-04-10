@@ -31,8 +31,11 @@ const Question = ({ question, questionIndex, onAnswer, userAnswer, showCorrectAn
   }
 
   return (
-    <div>
-      {NewlineText(question.question_text)}<br></br>
+    <div style={{
+      paddingLeft: '5px',
+      paddingRight: '5px',
+    }}>
+      {NewlineText(question.question_text)}
 
       <h3>Answer here :</h3>
       {question.choices.map((choice, index) => (
