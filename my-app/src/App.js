@@ -14,7 +14,7 @@ const App = () => {
 
   // Load the quiz questions on launch
   useEffect(() => {
-    fetch('/SOA_questions.json')
+    fetch('/DEA_questions.json')
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data)
